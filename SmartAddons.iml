@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module version="4"> 
+  <component name="AdditionalModuleElements"> 
+    <content url="file://$MODULE_DIR$" dumb="true"> 
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false"/>  
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource"/>  
+      <excludeFolder url="file://$MODULE_DIR$/target"/> 
+    </content> 
+  </component>  
+  <component name="FacetManager"> 
+    <facet type="minecraft" name="Minecraft"> 
+      <configuration> 
+        <autoDetectTypes> 
+          <platformType>SPIGOT</platformType> 
+        </autoDetectTypes> 
+      </configuration> 
+    </facet> 
+  </component>  
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/target/classes"/>
+    <output-test url="file://$MODULE_DIR$/target/test-classes"/>
+    <content>
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false"/>
+      <excludeFolder url="file://$MODULE_DIR$/target/classes"/>
+      <excludeFolder url="file://$MODULE_DIR$/target/test-classes"/>
+    </content>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/sergi/.m2/repository/org/spigotmc/spigot-api/1.12-R0.1-SNAPSHOT/spigot-api-1.12-R0.1-SNAPSHOT.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/sergi/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/sergi/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/sergi/.m2/repository/junit/junit/4.10/junit-4.10.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/sergi/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/sergi/.m2/repository/com/google/guava/guava/21.0/guava-21.0.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/sergi/.m2/repository/com/google/code/gson/gson/2.8.0/gson-2.8.0.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/sergi/.m2/repository/org/yaml/snakeyaml/1.18/snakeyaml-1.18.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/sergi/.m2/repository/net/md-5/bungeecord-chat/1.12-SNAPSHOT/bungeecord-chat-1.12-SNAPSHOT.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+  </component>
+</module>

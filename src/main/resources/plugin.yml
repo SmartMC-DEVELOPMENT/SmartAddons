@@ -1,0 +1,9 @@
+name: SmartAddons
+version: '${project.version}'
+main: me.imsergioh.smartaddons.SmartAddons
+depend:
+  - SmartCore23
+commands:
+  unloadAddon:
+  reloadAddon:
+  loadAddon:

@@ -1,0 +1,9 @@
+name: SmartAddons
+version: '1.0-SNAPSHOT'
+main: me.imsergioh.smartaddons.SmartAddons
+depend:
+  - SmartCore23
+commands:
+  unloadAddon:
+  reloadAddon:
+  loadAddon:
