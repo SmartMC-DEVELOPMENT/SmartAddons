@@ -1,6 +1,7 @@
 package me.imsergioh.smartaddons.command;
 
 import me.imsergioh.smartaddons.SmartAddons;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,6 +16,7 @@ public class ReloadAddonCommand implements CommandExecutor {
             return true;
         }
         SmartAddons.getMainPluginLoader().reloadPlugin(args[0]);
+        sender.sendMessage(ChatColor.GREEN + "Reloaded addon");
         return true;
     }
 }

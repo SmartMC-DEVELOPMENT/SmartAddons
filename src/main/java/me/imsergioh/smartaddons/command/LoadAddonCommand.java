@@ -2,6 +2,7 @@ package me.imsergioh.smartaddons.command;
 
 import me.imsergioh.smartaddons.SmartAddons;
 import me.imsergioh.smartaddons.util.FileUtil;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,6 +27,7 @@ public class LoadAddonCommand implements CommandExecutor {
         }
 
         SmartAddons.getMainPluginLoader().loadPlugin(pluginFile, true);
+        sender.sendMessage(ChatColor.GREEN + "Loaded addon");
         return true;
     }
 }
