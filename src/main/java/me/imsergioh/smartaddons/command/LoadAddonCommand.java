@@ -1,6 +1,6 @@
 package me.imsergioh.smartaddons.command;
 
-import me.imsergioh.smartaddons.SmartAddons;
+import me.imsergioh.smartaddons.Main;
 import me.imsergioh.smartaddons.util.FileUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -19,14 +19,14 @@ public class LoadAddonCommand implements CommandExecutor {
             return true;
         }
 
-        File pluginFile = FileUtil.searchFileByName(SmartAddons.getMainEventPluginsDir(), args[0]);
+        File pluginFile = FileUtil.searchFileByName(Main.getPlugin().getMainEventPluginsDir(), args[0]);
 
         if (pluginFile == null) {
             sender.sendMessage("Not addon found with similar name as file");
             return true;
         }
 
-        SmartAddons.getMainPluginLoader().loadPlugin(pluginFile, true);
+        Main.getPlugin().getMainPluginLoader().loadPlugin(pluginFile, true);
         sender.sendMessage(ChatColor.GREEN + "Loaded addon");
         return true;
     }

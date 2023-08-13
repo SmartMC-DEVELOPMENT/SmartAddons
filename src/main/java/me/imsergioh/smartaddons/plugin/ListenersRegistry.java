@@ -1,6 +1,6 @@
 package me.imsergioh.smartaddons.plugin;
 
-import me.imsergioh.smartaddons.SmartAddons;
+import me.imsergioh.smartaddons.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
@@ -10,12 +10,12 @@ public class ListenersRegistry {
 
     private static final HashMap<AddonPlugin, ListenersHandler> listeners = new HashMap<>();
 
-    public synchronized static void register(AddonPlugin plugin, Listener listener) {
+    public static void register(AddonPlugin plugin, Listener listener) {
         if (!listeners.containsKey(plugin)) {
             listeners.put(plugin, new ListenersHandler(plugin));
         }
         getListenersHandler(plugin).register(listener);
-        Bukkit.getPluginManager().registerEvents(listener, SmartAddons.getPlugin());
+        Bukkit.getPluginManager().registerEvents(listener, Main.getPlugin());
     }
 
     public static void unregister(AddonPlugin plugin) {

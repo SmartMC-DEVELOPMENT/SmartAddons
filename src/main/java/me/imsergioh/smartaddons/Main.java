@@ -10,15 +10,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
-public final class SmartAddons extends JavaPlugin {
+public class Main extends JavaPlugin {
 
-    private static SmartAddons plugin;
-    private static File mainEventPluginsDir;
-    private static PluginLoader mainPluginLoader;
+    private File mainEventPluginsDir;
+    private PluginLoader mainPluginLoader;
 
     @Override
     public void onEnable() {
-        plugin = this;
         getDataFolder().mkdirs();
         mainEventPluginsDir = new File(getDataFolder() + "/../../addon_plugins");
         mainEventPluginsDir.mkdirs();
@@ -32,15 +30,15 @@ public final class SmartAddons extends JavaPlugin {
         getCommand("loadAddon").setExecutor(new LoadAddonCommand());
     }
 
-    public static SmartAddons getPlugin() {
-        return plugin;
+    public static Main getPlugin() {
+        return (Main) Bukkit.getPluginManager().getPlugin("SmartAddons");
     }
 
-    public static File getMainEventPluginsDir() {
+    public File getMainEventPluginsDir() {
         return mainEventPluginsDir;
     }
 
-    public static PluginLoader getMainPluginLoader() {
+    public PluginLoader getMainPluginLoader() {
         return mainPluginLoader;
     }
 }

@@ -13,8 +13,8 @@ D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\command\Relo
 D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\plugin\PluginDescription.java
 D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\plugin\AddonPlugin.java
 D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\plugin\CommandsRegistry.java
-D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\AddonClassLoader.java
 D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\plugin\IAddonPlugin.java
 D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\plugin\ListenersRegistry.java
-D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\SmartAddons.java
+D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\Main.java
+D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\plugin\AddonClassLoader.java
 D:\workspace2023\SmartAddons\src\main\java\me\imsergioh\smartaddons\plugin\CommandExecutationState.java

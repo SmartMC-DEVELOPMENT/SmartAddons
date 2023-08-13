@@ -1,6 +1,6 @@
 package me.imsergioh.smartaddons.command;
 
-import me.imsergioh.smartaddons.SmartAddons;
+import me.imsergioh.smartaddons.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,7 +15,7 @@ public class ReloadAddonCommand implements CommandExecutor {
             sender.sendMessage("Write a plugin name to reload");
             return true;
         }
-        SmartAddons.getMainPluginLoader().reloadPlugin(args[0]);
+        Main.getPlugin().getMainPluginLoader().reloadPlugin(args[0]);
         sender.sendMessage(ChatColor.GREEN + "Reloaded addon");
         return true;
     }

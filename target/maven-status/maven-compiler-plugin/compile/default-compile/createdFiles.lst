@@ -1,4 +1,5 @@
 me\imsergioh\smartaddons\util\FileUtil.class
+me\imsergioh\smartaddons\Main.class
 me\imsergioh\smartaddons\plugin\ListenersRegistry.class
 me\imsergioh\smartaddons\command\UnloadAddonCommand.class
 me\imsergioh\smartaddons\plugin\CommandExecutationState.class
@@ -15,6 +16,5 @@ me\imsergioh\smartaddons\plugin\PluginDescription.class
 me\imsergioh\smartaddons\plugin\ListenersHandler.class
 me\imsergioh\smartaddons\plugin\PluginLoaderUtils.class
 me\imsergioh\smartaddons\plugin\AddonListener.class
-me\imsergioh\smartaddons\SmartAddons.class
 me\imsergioh\smartaddons\plugin\listener\PluginCommandsListeners.class
 me\imsergioh\smartaddons\plugin\IAddonCommandExecutor.class
