@@ -1,6 +1,8 @@
 name: SmartAddons
 version: '2.0'
-main: me.imsergioh.smartaddons.Main
+main: us.smartmc.smartaddons.SmartAddons
+depend:
+  - SmartCore23
 commands:
   unloadAddon:
   reloadAddon:
