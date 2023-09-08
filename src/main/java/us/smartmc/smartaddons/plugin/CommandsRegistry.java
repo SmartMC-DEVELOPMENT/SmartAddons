@@ -1,7 +1,10 @@
 package us.smartmc.smartaddons.plugin;
 
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +19,21 @@ public class CommandsRegistry {
         list.add(executor);
         registry.put(plugin, list);
         commands.put(executor.getName().toLowerCase(), executor);
+
+        try {
+            getCommandMap().register(executor.getName(), executor);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error while trying to register command: " + executor.getName());
+        }
+
+    }
+
+    public static CommandMap getCommandMap() throws NoSuchFieldException, IllegalAccessException {
+        Class<?> craftServerClass = Bukkit.getServer().getClass();
+        Field commandMapField = craftServerClass.getDeclaredField("commandMap");
+        commandMapField.setAccessible(true);
+        return (CommandMap) commandMapField.get(Bukkit.getServer());
     }
 
     public static void unregister(String plugin) {
