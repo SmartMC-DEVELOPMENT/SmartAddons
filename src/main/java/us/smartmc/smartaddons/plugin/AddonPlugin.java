@@ -1,5 +1,6 @@
 package us.smartmc.smartaddons.plugin;
 
+import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.event.Listener;
 
 import java.io.File;
@@ -22,8 +23,10 @@ public abstract class AddonPlugin implements IAddonPlugin {
     }
 
     @Override
-    public void registerCommand(AddonPluginCommand executor) {
-        CommandsRegistry.register(getInfo().name(), executor);
+    public void registerCommand(BukkitCommand... executors) {
+        for (BukkitCommand executor : executors) {
+            CommandsRegistry.register(getInfo().name(), executor);
+        }
     }
 
     @Override

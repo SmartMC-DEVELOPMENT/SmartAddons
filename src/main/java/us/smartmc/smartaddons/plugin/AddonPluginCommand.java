@@ -8,9 +8,9 @@ import org.bukkit.entity.Player;
 
 public abstract class AddonPluginCommand extends BukkitCommand implements CommandExecutor, IAddonCommandExecutor {
 
-    protected final String name;
-    protected final boolean forAdmins;
-    protected final String permission;
+    private final String name;
+    private final boolean forAdmins;
+    private final String permission;
 
     public AddonPluginCommand(String name, boolean forAdmins, String permissions) {
         super(name);
@@ -39,6 +39,13 @@ public abstract class AddonPluginCommand extends BukkitCommand implements Comman
 
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
+
+        // Replace first arg equivalent as the name of the command
+        String name = label.split(" ")[0];
+        label = label.replaceFirst(name + " ", "");
+
+        // Update args variable
+        args = label.split(" ");
         executeDefault(sender, label, args);
         return false;
     }

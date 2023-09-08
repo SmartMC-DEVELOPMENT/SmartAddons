@@ -3,6 +3,7 @@ package us.smartmc.smartaddons.plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.defaults.BukkitCommand;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -11,11 +12,11 @@ import java.util.List;
 
 public class CommandsRegistry {
 
-    private static final HashMap<String, List<AddonPluginCommand>> registry = new HashMap<>();
-    private static final HashMap<String, AddonPluginCommand> commands = new HashMap<>();
+    private static final HashMap<String, List<BukkitCommand>> registry = new HashMap<>();
+    private static final HashMap<String, BukkitCommand> commands = new HashMap<>();
 
-    public static void register(String plugin, AddonPluginCommand executor) {
-        List<AddonPluginCommand> list = getCommands(plugin);
+    public static void register(String plugin, BukkitCommand executor) {
+        List<BukkitCommand> list = getCommands(plugin);
         list.add(executor);
         registry.put(plugin, list);
         commands.put(executor.getName().toLowerCase(), executor);
@@ -37,13 +38,13 @@ public class CommandsRegistry {
     }
 
     public static void unregister(String plugin) {
-        for (AddonPluginCommand command : getCommands(plugin)) {
+        for (BukkitCommand command : getCommands(plugin)) {
             commands.remove(command.getName().toLowerCase());
         }
         registry.remove(plugin);
     }
 
-    public static List<AddonPluginCommand> getCommands(String name) {
+    public static List<BukkitCommand> getCommands(String name) {
         return registry.getOrDefault(name, new ArrayList<>());
     }
 
@@ -56,9 +57,9 @@ public class CommandsRegistry {
         label = label.replaceFirst(name + " ", "");
 
         String[] args = getArgs(label);
-        AddonPluginCommand commmand = commands.get(name);
+        BukkitCommand commmand = commands.get(name);
         try {
-            commmand.onCommand(sender, null, originalLabel, args);
+            commmand.execute(sender, originalLabel, args);
             return CommandExecutationState.FOUND;
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,6 +72,7 @@ public class CommandsRegistry {
     }
 
     private static String[] getArgs(String label) {
+        if (label.startsWith(" ")) label = label.replaceFirst(" ", "");
         return label.split(" ");
     }
 

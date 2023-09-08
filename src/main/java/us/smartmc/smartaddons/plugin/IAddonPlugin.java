@@ -1,5 +1,6 @@
 package us.smartmc.smartaddons.plugin;
 
+import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.event.Listener;
 
 public interface IAddonPlugin {
@@ -12,5 +13,5 @@ public interface IAddonPlugin {
 
     void registerListeners(Listener... listeners);
 
-    void registerCommand(AddonPluginCommand executor);
+    void registerCommand(BukkitCommand... executors);
 }
