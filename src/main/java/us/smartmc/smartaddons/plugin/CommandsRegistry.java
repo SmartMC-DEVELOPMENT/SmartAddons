@@ -19,7 +19,11 @@ public class CommandsRegistry {
         List<BukkitCommand> list = getCommands(plugin);
         list.add(executor);
         registry.put(plugin, list);
-        commands.put(executor.getName().toLowerCase(), executor);
+        commands.put(executor.getName(), executor);
+
+        for (String alias : executor.getAliases()) {
+            commands.put(alias, executor);
+        }
 
         try {
             getCommandMap().register(executor.getName(), executor);
@@ -27,7 +31,6 @@ public class CommandsRegistry {
             e.printStackTrace();
             System.out.println("Error while trying to register command: " + executor.getName());
         }
-
     }
 
     public static CommandMap getCommandMap() throws NoSuchFieldException, IllegalAccessException {
@@ -39,7 +42,10 @@ public class CommandsRegistry {
 
     public static void unregister(String plugin) {
         for (BukkitCommand command : getCommands(plugin)) {
-            commands.remove(command.getName().toLowerCase());
+            commands.remove(command.getName());
+            for (String alias : command.getAliases()) {
+                commands.remove(alias);
+            }
         }
         registry.remove(plugin);
     }
@@ -51,7 +57,7 @@ public class CommandsRegistry {
     public static CommandExecutationState execute(CommandSender sender, String label) {
         String originalLabel = label;
         if (label.startsWith("/")) label = label.replaceFirst("/", "");
-        String name = getName(label).toLowerCase();
+        String name = getName(label);
         if (!commands.containsKey(name)) return CommandExecutationState.NOT_FOUND;
         label = label.replaceFirst(name, "");
         label = label.replaceFirst(name + " ", "");

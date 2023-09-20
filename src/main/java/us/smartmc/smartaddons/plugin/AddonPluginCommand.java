@@ -42,7 +42,7 @@ public abstract class AddonPluginCommand extends BukkitCommand implements Comman
 
         // Replace first arg equivalent as the name of the command
         String name = label.split(" ")[0];
-        label = label.replaceFirst(name + " ", "");
+        label = label.toLowerCase().replaceFirst(name.toLowerCase() + " ", "");
 
         // Update args variable
         args = label.split(" ");
