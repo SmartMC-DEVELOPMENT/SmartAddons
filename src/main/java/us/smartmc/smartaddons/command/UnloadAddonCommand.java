@@ -1,22 +1,25 @@
 package us.smartmc.smartaddons.command;
 
-import us.smartmc.smartaddons.SmartAddons;
+import us.smartmc.smartaddons.manager.CustomCommandManager;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import us.smartmc.smartaddons.type.CommandPermissionNode;
+import us.smartmc.smartaddons.type.IPluginPlayer;
+import us.smartmc.smartaddons.type.PluginCommand;
 
-public class UnloadAddonCommand implements CommandExecutor {
+public class UnloadAddonCommand extends PluginCommand {
+
+    public UnloadAddonCommand(String name) {
+        super(name, CommandPermissionNode.ADMINISTRATOR, "ua");
+    }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("*")) return true;
+    public void onCommand(IPluginPlayer<?> sender, String[] args) {
+        if (!sender.hasPermission("*")) return;
         if (args.length == 0) {
             sender.sendMessage("Write a plugin name to unload");
-            return true;
+            return;
         }
-        SmartAddons.getMainPluginLoader().unload(args[0]);
-        sender.sendMessage(ChatColor.GREEN + "Unloaded addon");
-        return true;
+        CustomCommandManager.getAddonsPlugin().getMainPluginLoader().unload(args[0]);
+        sender.sendMessage("&aUnloaded addon");
     }
 }
