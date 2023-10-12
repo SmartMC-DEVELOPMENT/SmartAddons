@@ -1,0 +1,7 @@
+name: SmartAddons
+version: '2.0'
+main: us.smartmc.smartaddons.bungee.SmartAddonsBungee
+commands:
+  unloadAddon:
+  reloadAddon:
+  loadAddon:

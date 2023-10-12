@@ -1,6 +1,6 @@
 package us.smartmc.smartaddons.plugin;
 
-import us.smartmc.smartaddons.SmartAddons;
+import us.smartmc.smartaddons.spigot.SmartAddonsSpigot;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
@@ -15,7 +15,7 @@ public class ListenersRegistry {
             listeners.put(plugin, new ListenersHandler(plugin));
         }
         getListenersHandler(plugin).register(listener);
-        Bukkit.getPluginManager().registerEvents(listener, SmartAddons.getPlugin());
+        Bukkit.getPluginManager().registerEvents(listener, SmartAddonsSpigot.getPlugin());
     }
 
     public static void unregister(AddonPlugin plugin) {
