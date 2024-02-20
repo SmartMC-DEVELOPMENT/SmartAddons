@@ -1,5 +1,6 @@
 package us.smartmc.smartaddons.bungee;
 
+import lombok.Getter;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.connection.Connection;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -18,6 +19,7 @@ import java.io.File;
 
 public class SmartAddonsBungee extends Plugin implements Listener, SmartAddonsPlugin {
 
+    @Getter
     private static SmartAddonsBungee plugin;
 
     private static File mainEventPluginsDir;

@@ -1,6 +1,8 @@
 name: SmartAddons
 version: '2.0'
 main: us.smartmc.smartaddons.spigot.SmartAddonsSpigot
+softdepend:
+  - SmartCore23
 commands:
   unloadAddon:
   reloadAddon:

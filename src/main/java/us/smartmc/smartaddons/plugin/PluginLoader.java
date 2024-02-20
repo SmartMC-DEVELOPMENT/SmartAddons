@@ -1,5 +1,7 @@
 package us.smartmc.smartaddons.plugin;
 
+import me.imsergioh.pluginsapi.util.JavaUtil;
+
 import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -11,12 +13,8 @@ import java.util.jar.JarFile;
 
 public class PluginLoader {
 
-    private final HashMap<String, AddonPlugin> plugins;
+    private final HashMap<String, AddonPlugin> plugins = new HashMap<>();
     private final HashMap<AddonPlugin, String> pluginDirs = new HashMap<>();
-
-    public PluginLoader() {
-        plugins = new HashMap<>();
-    }
 
     public void loadPlugins(String pluginsDirectory) {
         File directory = new File(pluginsDirectory);
@@ -44,10 +42,13 @@ public class PluginLoader {
             }
             // LOADER & DESCRIPTION
             AddonClassLoader classLoader = new AddonClassLoader(new URL[]{jarUrl}, getClass().getClassLoader());
+
             PluginDescription description = PluginLoaderUtils.read(pluginIn);
             if (description == null)
                 throw new Exception("Not valid description found! Make sure that the plugin.json is at the main path of the .jar");
             Class<?> pluginClass = classLoader.loadClass(description.getMainClass());
+
+            JavaUtil.registerClassLoader(classLoader);
 
             // CREATE INSTANCE
             if (!AddonPlugin.class.isAssignableFrom(pluginClass)) return;
@@ -94,5 +95,4 @@ public class PluginLoader {
     public AddonPlugin get(String name) {
         return plugins.get(name);
     }
-
 }
