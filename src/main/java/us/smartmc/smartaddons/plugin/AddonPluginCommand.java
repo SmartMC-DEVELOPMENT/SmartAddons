@@ -41,11 +41,11 @@ public abstract class AddonPluginCommand extends BukkitCommand implements Comman
     public boolean execute(CommandSender sender, String label, String[] args) {
 
         // Replace first arg equivalent as the name of the command
-        String name = label.split(" ")[0];
+        String name = label.contains(" ") ? label.split(" ")[0] : label;
         label = label.toLowerCase().replaceFirst(name.toLowerCase() + " ", "");
 
         // Update args variable
-        args = label.split(" ");
+        if (label.contains(" ")) args = label.replaceFirst(label.split(" ")[0] + " ", "").split(" ");
         executeDefault(sender, label, args);
         return false;
     }

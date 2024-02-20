@@ -25,6 +25,8 @@ public class CommandsRegistry {
             commands.put(alias, executor);
         }
 
+        executor.setAliases(executor.getAliases());
+
         try {
             getCommandMap().register(executor.getName(), executor);
         } catch (Exception e) {
@@ -78,8 +80,9 @@ public class CommandsRegistry {
     }
 
     private static String[] getArgs(String label) {
-        if (label.startsWith(" ")) label = label.replaceFirst(" ", "");
-        return label.split(" ");
+        String[] args = new String[]{};
+        if (label.contains(" ")) args = label.replaceFirst(getName(label) + " ", "").split(" ");
+        return args;
     }
 
 }

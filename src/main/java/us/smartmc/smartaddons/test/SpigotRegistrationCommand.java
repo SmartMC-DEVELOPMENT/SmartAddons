@@ -19,7 +19,6 @@ public class SpigotRegistrationCommand extends Command {
 
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        sender.sendMessage("asdfasdfasdf");
         args = commandLabel.replaceFirst(commandLabel.split(" ")[0] + " ", "").split(" ");
         command.onCommand(PluginPlayer.get(SpigotCommandSender.class, sender), args);
         return false;
