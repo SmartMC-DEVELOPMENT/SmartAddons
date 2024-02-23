@@ -17,16 +17,15 @@ public class CommandsRegistry {
 
     public static void register(String plugin, BukkitCommand executor) {
         List<BukkitCommand> list = getCommands(plugin);
-        list.add(executor);
+
         registry.put(plugin, list);
+
+        List<String> aliases = new ArrayList<>(executor.getAliases());
+        aliases.replaceAll(String::toLowerCase);
+        executor.setAliases(aliases);
+
+        list.add(executor);
         commands.put(executor.getName(), executor);
-
-        for (String alias : executor.getAliases()) {
-            commands.put(alias, executor);
-        }
-
-        executor.setAliases(executor.getAliases());
-
         try {
             getCommandMap().register(executor.getName(), executor);
         } catch (Exception e) {
