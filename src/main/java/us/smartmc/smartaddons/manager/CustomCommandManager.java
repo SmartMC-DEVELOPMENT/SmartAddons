@@ -8,7 +8,10 @@ import us.smartmc.smartaddons.bungee.SmartAddonsBungee;
 import us.smartmc.smartaddons.command.LoadAddonCommand;
 import us.smartmc.smartaddons.command.ReloadAddonCommand;
 import us.smartmc.smartaddons.command.UnloadAddonCommand;
-import us.smartmc.smartaddons.type.*;
+import us.smartmc.smartaddons.type.IPluginPlayer;
+import us.smartmc.smartaddons.type.PluginCommand;
+import us.smartmc.smartaddons.type.PluginPlayer;
+import us.smartmc.smartaddons.type.ProxyCommandSender;
 
 import java.util.HashMap;
 
@@ -48,14 +51,29 @@ public class CustomCommandManager {
     }
 
     public boolean executeCommand(IPluginPlayer<?> player, String label) {
-        label = label.replaceFirst("/", "");
-        String name = label.split(" ")[0];
-        if (!commands.containsKey(name.toLowerCase())) return false;
-        String[] args = new String[]{};
-        if (label.contains(" ")) {
-            args = label.replaceFirst(name + " ", "").split(" ");
+        if (label.startsWith("/"))
+            label = label.replaceFirst("/", "");
+        String name = label.contains(" ") ? label.split(" ")[0] : label;
+
+        PluginCommand targetCommand = null;
+
+        for (PluginCommand pluginCommand : commands.values()) {
+            if (pluginCommand.getName().equalsIgnoreCase(name)) {
+                targetCommand = pluginCommand;
+                break;
+            }
+            for (String alias : pluginCommand.getAliases()) {
+                if (alias.equalsIgnoreCase(name)) {
+                    targetCommand = pluginCommand;
+                    break;
+                }
+            }
         }
-        commands.get(name.toLowerCase()).onCommand(player, args);
+        if (targetCommand == null) return false;
+
+        String[] args = label.contains(" ") ? label.replaceFirst(name + " ", "").split(" ") : new String[]{};
+
+        targetCommand.onCommand(player, args);
         return true;
     }
 
