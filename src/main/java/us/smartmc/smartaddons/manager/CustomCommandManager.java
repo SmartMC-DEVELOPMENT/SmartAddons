@@ -7,10 +7,7 @@ import us.smartmc.smartaddons.bungee.SmartAddonsBungee;
 import us.smartmc.smartaddons.command.LoadAddonCommand;
 import us.smartmc.smartaddons.command.ReloadAddonCommand;
 import us.smartmc.smartaddons.command.UnloadAddonCommand;
-import us.smartmc.smartaddons.spigot.SmartAddonsSpigot;
-import us.smartmc.smartaddons.test.SpigotRegistrationCommand;
 import us.smartmc.smartaddons.type.*;
-import us.smartmc.smartaddons.util.SpigotUtil;
 
 import java.util.HashMap;
 
