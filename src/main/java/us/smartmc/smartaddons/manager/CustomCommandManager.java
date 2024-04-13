@@ -1,7 +1,5 @@
 package us.smartmc.smartaddons.manager;
 
-import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.plugin.Command;
 import us.smartmc.smartaddons.SmartAddonsPlugin;
 import us.smartmc.smartaddons.bungee.SmartAddonsBungee;
 import us.smartmc.smartaddons.command.LoadAddonCommand;
@@ -29,17 +27,6 @@ public class CustomCommandManager {
 
     public void register(PluginCommand command) {
         commands.put(command.getName().toLowerCase(), command);
-
-        if (addonsPlugin instanceof SmartAddonsBungee) {
-            SmartAddonsBungee bungeePlugin = (SmartAddonsBungee) addonsPlugin;
-            bungeePlugin.getProxy().getPluginManager().registerCommand(bungeePlugin,
-                    new Command(command.getName()) {
-                        @Override
-                        public void execute(CommandSender sender, String[] args) {
-                            command.onCommand(PluginPlayer.get(ProxyCommandSender.class, sender), args);
-                        }
-                    });
-        }
     }
 
     public void unregister(String name) {

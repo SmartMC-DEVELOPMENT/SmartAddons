@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>8</java.version>
+        <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -21,8 +21,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -122,7 +122,7 @@
             <artifactId>velocityfull</artifactId>
             <version>velocity1</version>
             <scope>system</scope>
-            <systemPath>D:/LIBS_PLUGINS/velocity-3.3.0-SNAPSHOT-370.jar</systemPath>
+            <systemPath>D:/LIBS_PLUGINS/velocity-3.1.1-SNAPSHOT-97.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

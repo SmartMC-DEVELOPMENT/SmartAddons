@@ -2,6 +2,7 @@ package us.smartmc.smartaddons.plugin;
 
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public interface IAddonPlugin {
 
@@ -11,7 +12,7 @@ public interface IAddonPlugin {
 
     void reload();
 
-    void registerListeners(Listener... listeners);
+    void registerListeners(JavaPlugin plugin, Listener... listeners);
 
     void registerCommand(BukkitCommand... executors);
 }

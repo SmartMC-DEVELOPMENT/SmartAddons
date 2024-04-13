@@ -1,0 +1,4 @@
+name: smartaddons-spigot
+version: '${project.version}'
+main: us.smartmc.smartaddons.spigot.SmartAddonsSpigot
+api-version: '1.16'

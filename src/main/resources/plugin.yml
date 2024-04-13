@@ -1,7 +1,0 @@
-name: SmartAddons
-version: '2.0'
-main: us.smartmc.smartaddons.spigot.SmartAddonsSpigot
-commands:
-  unloadAddon:
-  reloadAddon:
-  loadAddon:

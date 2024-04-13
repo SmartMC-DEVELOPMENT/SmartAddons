@@ -7,6 +7,7 @@ import org.bukkit.command.defaults.BukkitCommand;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -59,8 +60,6 @@ public class CommandsRegistry {
         if (label.startsWith("/")) label = label.replaceFirst("/", "");
         String name = getName(label);
         if (!commands.containsKey(name)) return CommandExecutationState.NOT_FOUND;
-        label = label.replaceFirst(name, "");
-        label = label.replaceFirst(name + " ", "");
 
         String[] args = getArgs(label);
         BukkitCommand commmand = commands.get(name);
@@ -74,11 +73,14 @@ public class CommandsRegistry {
     }
 
     private static String getName(String label) {
-        return label.split(" ")[0];
+        String name = label;
+        if (label.contains(" ")) name = label.split(" ")[0];
+        if (name.startsWith("/")) name = new StringBuilder(name).deleteCharAt(0).toString();
+        return name;
     }
 
     private static String[] getArgs(String label) {
-        if (label.startsWith(" ")) label = label.replaceFirst(" ", "");
+        if (label.contains(" ")) label = label.replaceFirst(label.split(" ")[0], "");
         return label.split(" ");
     }
 

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SmartAddons.iml" filepath="$PROJECT_DIR$/.idea/SmartAddons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smartaddons-spigot/smartaddons-spigot.iml" filepath="$PROJECT_DIR$/smartaddons-spigot/smartaddons-spigot.iml" />
     </modules>
   </component>
 </project>

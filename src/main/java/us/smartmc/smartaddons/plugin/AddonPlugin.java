@@ -2,6 +2,7 @@ package us.smartmc.smartaddons.plugin;
 
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
@@ -15,10 +16,10 @@ public abstract class AddonPlugin implements IAddonPlugin {
     }
 
     @Override
-    public void registerListeners(Listener... listeners) {
+    public void registerListeners(JavaPlugin plugin, Listener... listeners) {
         for (Listener listener : listeners) {
             if (listener == null) continue;
-            ListenersRegistry.register(this, listener);
+            ListenersRegistry.register(plugin, this, listener);
         }
     }
 

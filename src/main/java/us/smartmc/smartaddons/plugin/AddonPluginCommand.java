@@ -22,7 +22,6 @@ public abstract class AddonPluginCommand extends BukkitCommand implements Comman
     @Override
     public void executeDefault(CommandSender sender, String label, String[] args) {
         executeAll(sender, args);
-
         if (sender instanceof Player) {
             executePlayer(((Player) sender).getPlayer(), args);
         } else {
@@ -39,13 +38,6 @@ public abstract class AddonPluginCommand extends BukkitCommand implements Comman
 
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
-
-        // Replace first arg equivalent as the name of the command
-        String name = label.split(" ")[0];
-        label = label.toLowerCase().replaceFirst(name.toLowerCase() + " ", "");
-
-        // Update args variable
-        args = label.split(" ");
         executeDefault(sender, label, args);
         return false;
     }

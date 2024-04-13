@@ -1,16 +1,16 @@
 package us.smartmc.smartaddons.spigot;
 
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 import us.smartmc.smartaddons.SmartAddonsPlugin;
 import us.smartmc.smartaddons.manager.CustomCommandManager;
 import us.smartmc.smartaddons.plugin.PluginLoader;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
 import us.smartmc.smartaddons.type.PluginPlayer;
 import us.smartmc.smartaddons.type.SpigotCommandSender;
 
@@ -18,7 +18,7 @@ import java.io.File;
 
 public class SmartAddonsSpigot extends JavaPlugin implements SmartAddonsPlugin, Listener {
 
-    private static SmartAddonsVelocity plugin;
+    private static SmartAddonsSpigot plugin;
 
     private static File mainEventPluginsDir;
     private PluginLoader mainPluginLoader;

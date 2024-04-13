@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.plugin.SimplePluginManager;
 
-import javax.activation.CommandMap;
 import java.lang.reflect.Field;
 
 public class SpigotUtil {

@@ -1,0 +1,4 @@
+name: smartaddons-spigot
+version: '1.0-SNAPSHOT'
+main: us.smartmc.smartaddons.spigot.SmartAddonsSpigot
+api-version: '1.16'
