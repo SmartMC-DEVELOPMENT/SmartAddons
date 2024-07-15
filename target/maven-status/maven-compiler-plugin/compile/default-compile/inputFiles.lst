@@ -2,7 +2,6 @@ D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\listene
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\command\UnloadAddonCommand.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\test\SpigotRegistrationCommand.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\velocity\SmartAddonsVelocity.java
-D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\PluginLoader.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\type\BungeeCordPlayer.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\type\ProxyCommandSender.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\CommandsRegistry.java
@@ -13,9 +12,11 @@ D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\AddonLi
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\util\FileUtil.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\PluginLoaderUtils.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\type\IPluginCommand.java
+D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\AbstractAddonInfo.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\IAddonPlugin.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\ListenersHandler.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\AddonInfo.java
+D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\AddonLoader.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\plugin\IAddonCommandExecutor.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\type\CommandPermissionNode.java
 D:\workspace2024\SmartAddons\src\main\java\us\smartmc\smartaddons\manager\CustomCommandManager.java

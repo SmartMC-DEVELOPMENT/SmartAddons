@@ -1,8 +1,8 @@
-us\smartmc\smartaddons\plugin\PluginLoader.class
 us\smartmc\smartaddons\type\IPluginCommand.class
 us\smartmc\smartaddons\util\FileUtil.class
 us\smartmc\smartaddons\command\UnloadAddonCommand.class
 us\smartmc\smartaddons\plugin\listener\PluginCommandsListeners.class
+us\smartmc\smartaddons\plugin\AbstractAddonInfo.class
 us\smartmc\smartaddons\bungee\SmartAddonsBungee.class
 velocity-plugin.json
 us\smartmc\smartaddons\util\ChatUtil.class
@@ -22,6 +22,7 @@ us\smartmc\smartaddons\plugin\ListenersHandler.class
 us\smartmc\smartaddons\plugin\AddonInfo.class
 us\smartmc\smartaddons\plugin\ListenersRegistry.class
 us\smartmc\smartaddons\command\LoadAddonCommand.class
+us\smartmc\smartaddons\plugin\AddonLoader.class
 us\smartmc\smartaddons\plugin\CommandsRegistry.class
 us\smartmc\smartaddons\type\PluginPlayer.class
 us\smartmc\smartaddons\type\ProxyCommandSender.class

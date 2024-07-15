@@ -103,26 +103,7 @@
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
     </repositories>
-
     <dependencies>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-api</artifactId>
-            <version>1.8-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>velocitygr</groupId>
-            <artifactId>velocityfull</artifactId>
-            <version>velocity1</version>
-            <scope>system</scope>
-            <systemPath>D:/LIBS_PLUGINS/velocity-3.1.1-SNAPSHOT-97.jar</systemPath>
-        </dependency>
+
     </dependencies>
 </project>

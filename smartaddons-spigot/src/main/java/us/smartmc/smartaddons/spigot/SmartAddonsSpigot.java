@@ -10,30 +10,31 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import us.smartmc.smartaddons.SmartAddonsPlugin;
 import us.smartmc.smartaddons.manager.CustomCommandManager;
-import us.smartmc.smartaddons.plugin.PluginLoader;
+import us.smartmc.smartaddons.plugin.AddonClassLoader;
+import us.smartmc.smartaddons.plugin.AddonLoader;
 import us.smartmc.smartaddons.type.PluginPlayer;
 import us.smartmc.smartaddons.type.SpigotCommandSender;
 
 import java.io.File;
+import java.util.concurrent.CompletableFuture;
 
 public class SmartAddonsSpigot extends JavaPlugin implements SmartAddonsPlugin, Listener {
 
     private static SmartAddonsSpigot plugin;
 
     private static File mainEventPluginsDir;
-    private PluginLoader mainPluginLoader;
 
     private CustomCommandManager commandsManager;
 
     @Override
     public void onEnable() {
         plugin = this;
-        mainPluginLoader = new PluginLoader();
         commandsManager = new CustomCommandManager(this, "reloadAddon", "loadAddon", "unloadAddon");
         getDataFolder().mkdirs();
         mainEventPluginsDir = new File(getDataFolder() + "/../../addon_plugins");
         mainEventPluginsDir.mkdirs();
-        mainPluginLoader.loadPlugins(mainEventPluginsDir.getAbsolutePath());
+
+        AddonLoader.loadPlugins(mainEventPluginsDir.getAbsolutePath());
 
         Bukkit.getPluginManager().registerEvents(this, this);
     }
@@ -57,8 +58,8 @@ public class SmartAddonsSpigot extends JavaPlugin implements SmartAddonsPlugin, 
     }
 
     @Override
-    public PluginLoader getMainPluginLoader() {
-        return mainPluginLoader;
+    public AddonLoader getMainPluginLoader() {
+        return new AddonLoader();
     }
 
     @Override
