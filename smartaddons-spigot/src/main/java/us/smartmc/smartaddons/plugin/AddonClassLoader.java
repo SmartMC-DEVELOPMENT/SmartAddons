@@ -94,6 +94,7 @@ public class AddonClassLoader extends URLClassLoader {
             URLClassLoader jarLoader = new URLClassLoader(urls);
             JsonObject jsonObject = readJsonObject(jarLoader, "plugin.json");
             String mainClass = jsonObject.get("main").getAsString();
+            if (loadedModules.containsKey(mainClass)) return;
 
             // Cargar la clase principal desde el JAR usando el AddonClassLoader
             Class<?> loadedClass = mainLoader.loadClass(mainClass);
