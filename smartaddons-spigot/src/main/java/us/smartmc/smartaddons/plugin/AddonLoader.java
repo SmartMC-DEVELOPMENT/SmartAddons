@@ -1,16 +1,16 @@
 package us.smartmc.smartaddons.plugin;
 
 import java.io.File;
-import java.util.HashMap;
+import java.util.HashSet;
 
-import static us.smartmc.smartaddons.plugin.AddonClassLoader.pluginDirs;
+import static us.smartmc.smartaddons.plugin.AddonClassLoader.pluginsJars;
 
 public class AddonLoader {
 
-    private final HashMap<String, AddonPlugin> plugins;
-
-    public AddonLoader() {
-        plugins = new HashMap<>();
+    public static void unloadAll() {
+        for (String name : new HashSet<>(AddonClassLoader.plugins.keySet())) {
+            unload(name);
+        }
     }
 
     public static void loadPlugins(String pluginsDirectory) {
@@ -20,27 +20,27 @@ public class AddonLoader {
         AddonClassLoader.loadModulesJars(files);
     }
 
-    public void unload(String name) {
-        AddonPlugin plugin = plugins.get(name);
+    public static void unload(String name) {
+        AddonPlugin plugin = AddonClassLoader.plugins.get(name);
         if (plugin == null) return;
         plugin.stop();
         CommandsRegistry.unregister(name);
         ListenersRegistry.unregister(plugin);
-        plugins.remove(name);
+        AddonClassLoader.unregisterAddon(name);
     }
 
     public void reloadPlugin(String name) {
-        AddonPlugin plugin = plugins.get(name);
+        AddonPlugin plugin = AddonClassLoader.plugins.get(name);
         if (plugin == null) {
             return;
         }
-        File file = new File(pluginDirs.get(plugin));
+        File file = pluginsJars.get(name);
         unload(name);
         AddonClassLoader.loadPluginJar(file, true);
     }
 
     public AddonPlugin get(String name) {
-        return plugins.get(name);
+        return AddonClassLoader.plugins.get(name);
     }
 
 }

@@ -39,6 +39,11 @@ public class SmartAddonsSpigot extends JavaPlugin implements SmartAddonsPlugin, 
         Bukkit.getPluginManager().registerEvents(this, this);
     }
 
+    @Override
+    public void onDisable() {
+        AddonLoader.unloadAll();
+    }
+
     @EventHandler(priority = EventPriority.MONITOR)
     public void onCommand(PlayerCommandPreprocessEvent event) {
         boolean executed =

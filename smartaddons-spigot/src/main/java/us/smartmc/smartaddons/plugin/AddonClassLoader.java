@@ -9,6 +9,7 @@ import com.google.gson.JsonParser;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -21,9 +22,11 @@ public class AddonClassLoader extends URLClassLoader {
 
     private static AddonClassLoader addonClassLoader;
 
-    public final static Map<AddonPlugin, String> pluginDirs = new HashMap<>();
+    public final static Map<String, File> pluginsJars = new HashMap<>();
     private final static Map<String, AbstractAddonInfo> modulesInfo = new HashMap<>();
     private final static Map<String, IAddonPlugin> loadedModules = new HashMap<>();
+
+    public final static HashMap<String, AddonPlugin> plugins = new HashMap<>();
 
     public AddonClassLoader(URL[] urls) {
         super(urls, AddonPlugin.class.getClassLoader());
@@ -32,6 +35,14 @@ public class AddonClassLoader extends URLClassLoader {
     @Override
     protected void addURL(URL url) {
         super.addURL(url);
+    }
+
+    public static void unregisterAddon(String addonName) {
+        String className = plugins.get(addonName).getClass().getName();
+        plugins.remove(addonName);
+        loadedModules.remove(className);
+        modulesInfo.remove(addonName);
+        pluginsJars.remove(addonName);
     }
 
     private static String loadAddonInfo(File file) throws Exception {
@@ -114,6 +125,8 @@ public class AddonClassLoader extends URLClassLoader {
             dataFolderField.set(plugin, dataFolder);
             dataFolderField.setAccessible(false);
 
+            pluginsJars.put(plugin.getInfo().name(), file);
+
             // Iniciar el plugin si es necesario
             if (start) {
                 plugin.start();
@@ -121,6 +134,7 @@ public class AddonClassLoader extends URLClassLoader {
 
             // Registrar el módulo cargado
             loadedModules.put(mainClass, plugin);
+            plugins.put(plugin.getInfo().name(), plugin);
         } catch (Exception e) {
             throw new RuntimeException("Error al cargar el plugin desde el archivo JAR", e);
         }
@@ -132,8 +146,16 @@ public class AddonClassLoader extends URLClassLoader {
             System.out.println("Resource not found: " + resourcePath);
             return null;
         }
-        InputStreamReader inputStreamReader = new InputStreamReader(jsonStream);
-        return JsonParser.parseReader(inputStreamReader).getAsJsonObject();
+
+        // Lee el InputStream y crea un InputStreamReader
+        Reader reader = new InputStreamReader(jsonStream);
+
+        // Usa JsonParser para parsear el contenido del Reader
+        JsonParser parser = new JsonParser();
+        JsonElement jsonElement = parser.parse(reader);
+
+        // Convierte el JsonElement a JsonObject
+        return jsonElement.getAsJsonObject();
     }
 
     @Override
