@@ -136,7 +136,8 @@ public class AddonClassLoader extends URLClassLoader {
             loadedModules.put(mainClass, plugin);
             plugins.put(plugin.getInfo().name(), plugin);
         } catch (Exception e) {
-            throw new RuntimeException("Error al cargar el plugin desde el archivo JAR", e);
+            e.printStackTrace();
+            System.out.println("Error al cargar el plugin desde el archivo JAR");
         }
     }
 
